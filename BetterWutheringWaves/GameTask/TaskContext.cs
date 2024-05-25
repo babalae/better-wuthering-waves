@@ -1,0 +1,69 @@
+﻿using BetterWutheringWaves.Core.Config;
+using BetterWutheringWaves.GameTask.Model;
+using BetterWutheringWaves.Helpers;
+using BetterWutheringWaves.Service;
+using System;
+using System.Threading;
+
+namespace BetterWutheringWaves.GameTask
+{
+    /// <summary>
+    /// 任务上下文
+    /// </summary>
+    public class TaskContext
+    {
+        private static TaskContext? _uniqueInstance;
+        private static object? InstanceLocker;
+
+#pragma warning disable CS8618 // 在退出构造函数时，不可为 null 的字段必须包含非 null 值。请考虑声明为可以为 null。
+
+        private TaskContext()
+        {
+        }
+
+#pragma warning restore CS8618 // 在退出构造函数时，不可为 null 的字段必须包含非 null 值。请考虑声明为可以为 null。
+
+        public static TaskContext Instance()
+        {
+            return LazyInitializer.EnsureInitialized(ref _uniqueInstance, ref InstanceLocker, () => new TaskContext());
+        }
+
+        public void Init(IntPtr hWnd)
+        {
+            GameHandle = hWnd;
+            SystemInfo = new SystemInfo(hWnd);
+            DpiScale = DpiHelper.ScaleY;
+            //MaskWindowHandle = new WindowInteropHelper(MaskWindow.Instance()).Handle;
+            IsInitialized = true;
+        }
+
+        public bool IsInitialized { get; set; }
+
+        public IntPtr GameHandle { get; set; }
+
+        //public IntPtr MaskWindowHandle { get; set; }
+
+        public float DpiScale { get; set; }
+
+        public SystemInfo SystemInfo { get; set; }
+
+        public AllConfig Config
+        {
+            get
+            {
+                if (ConfigService.Config == null)
+                {
+                    throw new Exception("Config未初始化");
+                }
+
+                return ConfigService.Config;
+            }
+        }
+
+        /// <summary>
+        /// 关联启动鸣潮的时间
+        /// 注意 IsInitialized = false 时，这个值就会被设置
+        /// </summary>
+        public DateTime LinkedStartGenshinTime { get; set; } = DateTime.MinValue;
+    }
+}

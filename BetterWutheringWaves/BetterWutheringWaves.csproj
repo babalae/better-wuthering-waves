@@ -1,0 +1,197 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net7.0-windows10.0.22621.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<UseWPF>true</UseWPF>
+		<UseWindowsForms>True</UseWindowsForms>
+		<LangVersion>12.0</LangVersion>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<ApplicationIcon>Assets\logo.ico</ApplicationIcon>
+		<AssemblyName>BetterWW</AssemblyName>
+		<Platforms>x64</Platforms>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Remove="GameTask\Common\Element\Assets\MapPoint\**" />
+		<EmbeddedResource Remove="GameTask\Common\Element\Assets\MapPoint\**" />
+		<None Remove="Assets\*.jpg" />
+		<None Remove="Assets\*.png" />
+		<None Remove="Assets\*.ico" />
+		<None Remove="Assets\Fonts\*.ttf" />
+		<None Remove="Assets\Highlighting\*.xshd" />
+		<None Remove="GameTask\Common\Element\Assets\MapPoint\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Resource Include="Assets\*.jpg" />
+		<Resource Include="Assets\*.png" />
+		<Resource Include="Assets\*.ico" />
+		<Resource Include="Assets\Fonts\*.ttf" />
+		<Resource Include="Assets\Highlighting\*.xshd" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Page Remove="GameTask\Common\Element\Assets\MapPoint\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AvalonEdit" Version="6.3.0.90" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
+		<!--<PackageReference Include="Microsoft.ML.OnnxRuntime" Version="1.17.1" />
+		<PackageReference Include="Microsoft.ML.OnnxRuntime.Managed" Version="1.17.1" />-->
+		<PackageReference Include="Ookii.Dialogs.Wpf" Version="5.0.1" />
+		<PackageReference Include="OpenCvSharp4.Extensions" Version="4.8.0.20230708" />
+		<PackageReference Include="OpenCvSharp4.Windows" Version="4.8.0.20230708" />
+		<PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.77" />
+		<PackageReference Include="MouseKeyHook" Version="5.7.1" />
+		<!--<PackageReference Include="Sdcb.PaddleInference" Version="2.5.0.1" />
+		<PackageReference Include="Sdcb.PaddleInference.runtime.win64.openblas" Version="2.5.1" />
+		<PackageReference Include="Sdcb.PaddleOCR" Version="2.7.0" />
+		<PackageReference Include="Sdcb.PaddleOCR.Models.Online" Version="2.7.0.1" />-->
+		<PackageReference Include="Serilog.Extensions.Logging" Version="7.0.0" />
+		<PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+		<PackageReference Include="Serilog.Sinks.RichTextBox.Wpf" Version="1.1.0" />
+		<PackageReference Include="Vanara.PInvoke.NtDll" Version="3.4.17" />
+		<PackageReference Include="Vanara.PInvoke.SHCore" Version="3.4.17" />
+		<PackageReference Include="Vanara.PInvoke.User32" Version="3.4.17" />
+		<PackageReference Include="WPF-UI" Version="3.0.0-preview.7" />
+		<PackageReference Include="WPF-UI.Tray" Version="3.0.0-preview.7" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Fischless.GameCapture\Fischless.GameCapture.csproj" />
+		<ProjectReference Include="..\Fischless.HotkeyCapture\Fischless.HotkeyCapture.csproj" />
+		<ProjectReference Include="..\Fischless.WindowsInput\Fischless.WindowsInput.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Update="GameTask\TaskContext.cs">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</Compile>
+		<Compile Update="View\MaskWindow.xaml.cs">
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile Update="View\Pages\HotkeyPage.xaml.cs">
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile Update="View\Pages\TriggerSettingsPage.xaml.cs">
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile Update="View\PickerWindow.xaml.cs">
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile Update="View\Windows\MapViewer.xaml.cs">
+		  <SubType>Code</SubType>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="Assets\Model\PaddleOCR\ch_PP-OCRv4_det\inference.pdiparams">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="Assets\Model\PaddleOCR\ch_PP-OCRv4_det\inference.pdiparams.info">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="Assets\Model\PaddleOCR\ch_PP-OCRv4_det\inference.pdmodel">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="Assets\Model\PaddleOCR\ch_PP-OCRv4_rec\inference.pdiparams">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="Assets\Model\PaddleOCR\ch_PP-OCRv4_rec\inference.pdiparams.info">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="Assets\Model\PaddleOCR\ch_PP-OCRv4_rec\inference.pdmodel">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="Assets\Model\PaddleOCR\ch_ppocr_mobile_v2.0_cls\._inference.pdmodel">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="Assets\Model\PaddleOCR\ch_ppocr_mobile_v2.0_cls\inference.pdiparams">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="Assets\Model\PaddleOCR\ch_ppocr_mobile_v2.0_cls\inference.pdiparams.info">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="Assets\Model\PaddleOCR\ch_ppocr_mobile_v2.0_cls\inference.pdmodel">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="Assets\Model\PaddleOCR\ppocr_keys_v1.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="Assets\Model\PaddleOCR\test_ocr.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="GameTask\AutoSkip\Assets\1920x1080\confirm.png">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="GameTask\AutoSkip\Assets\1920x1080\not_prompt_again.png">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="GameTask\AutoSkip\Assets\1920x1080\skip.png">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="GameTask\AutoSkip\Assets\1920x1080\start_auto.png">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="GameTask\AutoSkip\Assets\1920x1080\stop_auto.png">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="GameTask\Common\Element\Assets\1920x1080\collect.png">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="GameTask\Common\Element\Assets\1920x1080\comfirm_btn1.png">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="GameTask\Common\Element\Assets\1920x1080\comfirm_btn2.png">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="GameTask\Common\Element\Assets\1920x1080\icon_daily_reward.png">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="GameTask\Common\Element\Assets\1920x1080\icon_exclamation.png">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="GameTask\Common\Element\Assets\1920x1080\icon_explore.png">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="GameTask\Common\Element\Assets\1920x1080\icon_option.png">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="GameTask\Common\Element\Assets\1920x1080\page_close.png">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="GameTask\Common\Element\Assets\1920x1080\primogem.png">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="GameTask\Common\Element\Assets\1920x1080\re.png">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="GameTask\Common\Element\Assets\1920x1080\stop_auto.png">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="GameTask\Common\Element\Assets\1920x1080\submit_icon_exclamation.png">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="GameTask\Common\Element\Assets\1920x1080\ui_lt_cook_icon.png">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="GameTask\GameLoading\Assets\1920x1080\welkin_moon_logo.png">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="GameTask\AutoPick\Assets\1920x1080\" />
+	  <Folder Include="GameTask\AutoSkip\Assets\1920x1080\" />
+	  <Folder Include="GameTask\Common\Element\Assets\1920x1080\" />
+	  <Folder Include="GameTask\Macro\" />
+	  <Folder Include="User\" />
+	</ItemGroup>
+
+</Project>
