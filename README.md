@@ -9,6 +9,11 @@
 ## 功能
   * 快速点击F过剧情，可以后台过。在前台的情况下会自动点击跳过按钮。<del>多分支会随机按上下键选择分支回答，避免死循环。</del>
 
+## 截图
+
+![image](https://github.com/babalae/better-wuthering-waves/assets/15783049/5b1c000f-f8e0-4ec0-9b6d-1fc2c7353c3e)
+
+
 ## 下载
 
 > [!NOTE]
