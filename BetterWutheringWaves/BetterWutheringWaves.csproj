@@ -91,42 +91,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Update="Assets\Model\PaddleOCR\ch_PP-OCRv4_det\inference.pdiparams">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-		<None Update="Assets\Model\PaddleOCR\ch_PP-OCRv4_det\inference.pdiparams.info">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-		<None Update="Assets\Model\PaddleOCR\ch_PP-OCRv4_det\inference.pdmodel">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-		<None Update="Assets\Model\PaddleOCR\ch_PP-OCRv4_rec\inference.pdiparams">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-		<None Update="Assets\Model\PaddleOCR\ch_PP-OCRv4_rec\inference.pdiparams.info">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-		<None Update="Assets\Model\PaddleOCR\ch_PP-OCRv4_rec\inference.pdmodel">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-		<None Update="Assets\Model\PaddleOCR\ch_ppocr_mobile_v2.0_cls\._inference.pdmodel">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-		<None Update="Assets\Model\PaddleOCR\ch_ppocr_mobile_v2.0_cls\inference.pdiparams">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-		<None Update="Assets\Model\PaddleOCR\ch_ppocr_mobile_v2.0_cls\inference.pdiparams.info">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-		<None Update="Assets\Model\PaddleOCR\ch_ppocr_mobile_v2.0_cls\inference.pdmodel">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-		<None Update="Assets\Model\PaddleOCR\ppocr_keys_v1.txt">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-		<None Update="Assets\Model\PaddleOCR\test_ocr.png">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
 		<None Update="GameTask\AutoSkip\Assets\1920x1080\confirm.png">
 		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
