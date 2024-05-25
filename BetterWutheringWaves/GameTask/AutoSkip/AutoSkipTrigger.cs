@@ -41,7 +41,7 @@ public class AutoSkipTrigger : ITaskTrigger
 
         _prevExecute = DateTime.Now;
 
-        if (SystemControl.IsGameActive())
+        if (TaskContext.Instance().Config.AutoSkipConfig.PressSkipEnabled && SystemControl.IsGameActive())
         {
             var skipRa = content.CaptureRectArea.Find(AutoSkipAssets.Instance.SkipButtonRo);
             if (skipRa.IsExist())
@@ -80,13 +80,17 @@ public class AutoSkipTrigger : ITaskTrigger
             int n = _random.Next(1, 4);
             if (n == 2)
             {
-                _simulator.KeyPressBackground(User32.VK.VK_UP);
-                Thread.Sleep(100);
+                // Simulation.SendInput.Keyboard.KeyPress(User32.VK.VK_UP);
+                _simulator.KeyPressBackground(User32.VK.VK_W);
+                // _logger.LogInformation("上");
+                // Thread.Sleep(500);
             }
             else if (n == 3)
             {
-                _simulator.KeyPressBackground(User32.VK.VK_DOWN);
-                Thread.Sleep(100);
+                // Simulation.SendInput.Keyboard.KeyPress(User32.VK.VK_DOWN);
+                _simulator.KeyPressBackground(User32.VK.VK_S);
+                // _logger.LogInformation("下");
+                // Thread.Sleep(500);
             }
             _simulator.KeyPressBackground(User32.VK.VK_F);
         }

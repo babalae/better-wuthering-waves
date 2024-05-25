@@ -53,10 +53,10 @@ public partial class HotKeyConfig : ObservableObject
     private string _autoSkipEnabledHotkeyType = HotKeyTypeEnum.KeyboardMonitor.ToString();
 
     [ObservableProperty]
-    private string _autoSkipHangoutEnabledHotkey = "";
+    private string _autoSkipPressSkipEnabledHotkey = "";
 
     [ObservableProperty]
-    private string _autoSkipHangoutEnabledHotkeyType = HotKeyTypeEnum.KeyboardMonitor.ToString();
+    private string _autoSkipPressSkipEnabledHotkeyType = HotKeyTypeEnum.KeyboardMonitor.ToString();
 
     [ObservableProperty]
     private string _autoWoodHotkey = "";
@@ -65,7 +65,7 @@ public partial class HotKeyConfig : ObservableObject
     private string _autoWoodHotkeyType = HotKeyTypeEnum.KeyboardMonitor.ToString();
 
     [ObservableProperty]
-    private string _bgiEnabledHotkey = "F12";
+    private string _bgiEnabledHotkey = "F11";
 
     [ObservableProperty]
     private string _bgiEnabledHotkeyType = HotKeyTypeEnum.GlobalRegister.ToString();

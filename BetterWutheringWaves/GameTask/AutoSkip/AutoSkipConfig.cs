@@ -19,9 +19,9 @@ namespace BetterWutheringWaves.GameTask.AutoSkip
         [ObservableProperty] private bool _enabled = true;
 
         /// <summary>
-        /// 快速跳过对话
+        /// 自动按下跳过按钮
         /// </summary>
-        [ObservableProperty] private bool _quicklySkipConversationsEnabled = true;
+        [ObservableProperty] private bool _pressSkipEnabled = true;
 
         public int ChatOptionTextWidth { get; set; } = 280;
 

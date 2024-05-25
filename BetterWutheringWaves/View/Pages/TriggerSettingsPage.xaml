@@ -164,7 +164,7 @@
                 </Grid>
             </ui:CardExpander.Header>
             <StackPanel>
-                <!--<Grid Margin="16">
+                <Grid Margin="16">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -176,19 +176,20 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="快速跳过对话文本"
+                                  Text="自动点击跳过按钮"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="如果你要听完整的主线语音的话，可以关闭此功能"
+                                  Text="自动点击左上角跳过按钮"
                                   TextWrapping="Wrap" />
                     <ui:ToggleSwitch Grid.Row="0"
                                      Grid.RowSpan="2"
                                      Grid.Column="1"
                                      Margin="0,0,36,0"
-                                     IsChecked="{Binding Config.AutoSkipConfig.QuicklySkipConversationsEnabled, Mode=TwoWay}" />
+                                     IsChecked="{Binding Config.AutoSkipConfig.PressSkipEnabled, Mode=TwoWay}" />
                 </Grid>
+                <!--
                 <Grid Margin="16">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />

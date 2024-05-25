@@ -149,6 +149,18 @@ public partial class HotKeyPageViewModel : ObservableObject, IViewModel
             }
         );
         HotKeySettingModels.Add(autoSkipEnabledHotKeySettingModel);
+
+        HotKeySettingModels.Add(new HotKeySettingModel(
+            "自动按下跳过按钮开关",
+            nameof(Config.HotKeyConfig.AutoSkipPressSkipEnabledHotkey),
+            Config.HotKeyConfig.AutoSkipPressSkipEnabledHotkey,
+            Config.HotKeyConfig.AutoSkipPressSkipEnabledHotkeyType,
+            (_, _) =>
+            {
+                TaskContext.Instance().Config.AutoSkipConfig.PressSkipEnabled = !TaskContext.Instance().Config.AutoSkipConfig.PressSkipEnabled;
+                _logger.LogInformation("切换{Name}状态为[{Enabled}]", "自动按下跳过按钮", ToChinese(TaskContext.Instance().Config.AutoSkipConfig.PressSkipEnabled));
+            }
+        ));
     }
 
     private string ToChinese(bool enabled)
