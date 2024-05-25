@@ -20,7 +20,7 @@ public partial class AllConfig : ObservableObject
     ///     窗口捕获的方式
     /// </summary>
     [ObservableProperty]
-    private string _captureMode = CaptureModes.BitBlt.ToString();
+    private string _captureMode = CaptureModes.WindowsGraphicsCapture.ToString();
 
     /// <summary>
     ///     详细的错误日志
