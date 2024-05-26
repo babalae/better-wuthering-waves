@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Reflection;
+using BetterWutheringWaves.Helpers;
 using HotKeySettingModel = BetterWutheringWaves.Model.HotKeySettingModel;
 
 namespace BetterWutheringWaves.ViewModel.Pages;
@@ -161,6 +162,20 @@ public partial class HotKeyPageViewModel : ObservableObject, IViewModel
                 _logger.LogInformation("切换{Name}状态为[{Enabled}]", "自动按下跳过按钮", ToChinese(TaskContext.Instance().Config.AutoSkipConfig.PressSkipEnabled));
             }
         ));
+
+        if (RuntimeHelper.IsDebug)
+        {
+            HotKeySettingModels.Add(new HotKeySettingModel(
+                "测试按钮",
+                nameof(Config.HotKeyConfig.Test1Hotkey),
+                Config.HotKeyConfig.Test1Hotkey,
+                Config.HotKeyConfig.Test1HotkeyType,
+                (_, _) =>
+                {
+                },
+                true
+            ));
+        }
     }
 
     private string ToChinese(bool enabled)

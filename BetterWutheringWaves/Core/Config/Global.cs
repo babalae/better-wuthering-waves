@@ -5,7 +5,7 @@ namespace BetterWutheringWaves.Core.Config;
 
 public class Global
 {
-    public static string Version { get; } = "0.10.0";
+    public static string Version { get; } = "0.11.0";
 
     public static string StartUpPath { get; set; } = AppContext.BaseDirectory;
 
