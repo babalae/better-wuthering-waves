@@ -1,4 +1,5 @@
 ﻿using BetterWutheringWaves.Core.Config;
+using BetterWutheringWaves.Core.Simulator;
 using BetterWutheringWaves.GameTask.Model;
 using BetterWutheringWaves.Helpers;
 using BetterWutheringWaves.Service;
@@ -31,6 +32,7 @@ namespace BetterWutheringWaves.GameTask
         public void Init(IntPtr hWnd)
         {
             GameHandle = hWnd;
+            PostMessageSimulator = Simulation.PostMessage(GameHandle);
             SystemInfo = new SystemInfo(hWnd);
             DpiScale = DpiHelper.ScaleY;
             //MaskWindowHandle = new WindowInteropHelper(MaskWindow.Instance()).Handle;
@@ -40,6 +42,8 @@ namespace BetterWutheringWaves.GameTask
         public bool IsInitialized { get; set; }
 
         public IntPtr GameHandle { get; set; }
+
+        public PostMessageSimulator PostMessageSimulator { get; private set; }
 
         //public IntPtr MaskWindowHandle { get; set; }
 

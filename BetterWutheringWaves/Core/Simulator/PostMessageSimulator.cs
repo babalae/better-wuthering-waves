@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using Vanara.PInvoke;
+using static Vanara.PInvoke.User32;
 
 namespace BetterWutheringWaves.Core.Simulator;
 
@@ -44,6 +45,16 @@ public class PostMessageSimulator
         IntPtr p = (16 << 16) | 16;
         User32.PostMessage(_hWnd, WM_LBUTTONDOWN, IntPtr.Zero, p);
         Thread.Sleep(100);
+        User32.PostMessage(_hWnd, WM_LBUTTONUP, IntPtr.Zero, p);
+        return this;
+    }
+
+    public PostMessageSimulator LeftButtonClickBackground(int x, int y)
+    {
+        IntPtr p = (y << 16) | x;
+        User32.PostMessage(_hWnd, WM_LBUTTONDOWN, IntPtr.Zero, p);
+        Thread.Sleep(100);
+        User32.PostMessage(_hWnd, User32.WindowMessage.WM_CHAR, IntPtr.Zero, 0x1e0001);
         User32.PostMessage(_hWnd, WM_LBUTTONUP, IntPtr.Zero, p);
         return this;
     }
@@ -97,6 +108,7 @@ public class PostMessageSimulator
     {
         //User32.PostMessage(_hWnd, User32.WindowMessage.WM_ACTIVATE, 1, 0);
         User32.PostMessage(_hWnd, User32.WindowMessage.WM_KEYDOWN, (nint)vk, 0x1e0001);
+        Thread.Sleep(50);
         User32.PostMessage(_hWnd, User32.WindowMessage.WM_CHAR, (nint)vk, 0x1e0001);
         User32.PostMessage(_hWnd, User32.WindowMessage.WM_KEYUP, (nint)vk, (nint)0xc01e0001);
         return this;
@@ -136,6 +148,7 @@ public class PostMessageSimulator
     {
         User32.PostMessage(_hWnd, User32.WindowMessage.WM_ACTIVATE, 1, 0);
         User32.PostMessage(_hWnd, User32.WindowMessage.WM_KEYDOWN, (nint)vk, 0x1e0001);
+        Thread.Sleep(50);
         User32.PostMessage(_hWnd, User32.WindowMessage.WM_CHAR, (nint)vk, 0x1e0001);
         User32.PostMessage(_hWnd, User32.WindowMessage.WM_KEYUP, (nint)vk, (nint)0xc01e0001);
         return this;

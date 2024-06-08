@@ -10,7 +10,9 @@ using Microsoft.Extensions.Logging;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Reflection;
+using System.Threading;
 using BetterWutheringWaves.Helpers;
+using Vanara.PInvoke;
 using HotKeySettingModel = BetterWutheringWaves.Model.HotKeySettingModel;
 
 namespace BetterWutheringWaves.ViewModel.Pages;
@@ -172,6 +174,9 @@ public partial class HotKeyPageViewModel : ObservableObject, IViewModel
                 Config.HotKeyConfig.Test1HotkeyType,
                 (_, _) =>
                 {
+                    TaskContext.Instance().PostMessageSimulator.KeyPressBackground(User32.VK.VK_W);
+                    Thread.Sleep(100);
+                    // TaskContext.Instance().PostMessageSimulator.KeyPressBackground(User32.VK.VK_F);
                 },
                 true
             ));

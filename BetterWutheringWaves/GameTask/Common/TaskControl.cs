@@ -28,14 +28,14 @@ public class TaskControl
 
     public static void Sleep(int millisecondsTimeout)
     {
-        NewRetry.Do(() =>
-        {
-            if (!SystemControl.IsGameActiveByProcess())
-            {
-                Logger.LogInformation("当前获取焦点的窗口不是鸣潮，暂停");
-                throw new RetryException("当前获取焦点的窗口不是鸣潮");
-            }
-        }, TimeSpan.FromSeconds(1), 100);
+        // NewRetry.Do(() =>
+        // {
+        //     if (!SystemControl.IsGameActiveByProcess())
+        //     {
+        //         Logger.LogInformation("当前获取焦点的窗口不是鸣潮，暂停");
+        //         throw new RetryException("当前获取焦点的窗口不是鸣潮");
+        //     }
+        // }, TimeSpan.FromSeconds(1), 100);
         Thread.Sleep(millisecondsTimeout);
     }
 
@@ -51,19 +51,19 @@ public class TaskControl
             return;
         }
 
-        NewRetry.Do(() =>
-        {
-            if (cts is { IsCancellationRequested: true })
-            {
-                throw new NormalEndException("取消自动任务");
-            }
-
-            if (!SystemControl.IsGameActiveByProcess())
-            {
-                Logger.LogInformation("当前获取焦点的窗口不是鸣潮，暂停");
-                throw new RetryException("当前获取焦点的窗口不是鸣潮");
-            }
-        }, TimeSpan.FromSeconds(1), 100);
+        // NewRetry.Do(() =>
+        // {
+        //     if (cts is { IsCancellationRequested: true })
+        //     {
+        //         throw new NormalEndException("取消自动任务");
+        //     }
+        //
+        //     if (!SystemControl.IsGameActiveByProcess())
+        //     {
+        //         Logger.LogInformation("当前获取焦点的窗口不是鸣潮，暂停");
+        //         throw new RetryException("当前获取焦点的窗口不是鸣潮");
+        //     }
+        // }, TimeSpan.FromSeconds(1), 100);
         Thread.Sleep(millisecondsTimeout);
         if (cts is { IsCancellationRequested: true })
         {

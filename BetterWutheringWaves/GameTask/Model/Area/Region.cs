@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Threading;
+using Vanara.PInvoke;
 
 namespace BetterWutheringWaves.GameTask.Model.Area;
 
@@ -84,6 +86,30 @@ public class Region : IDisposable
     {
         // 相对自己是 0, 0 坐标
         ClickTo(0, 0, Width, Height);
+    }
+
+    /// <summary>
+    /// 后台点击【自己】的中心
+    /// </summary>
+    public void BackgroundClick()
+    {
+        // 相对自己是 0, 0 坐标
+        BackgroundClickTo(0, 0, Width, Height);
+    }
+
+    /// <summary>
+    /// 后台点击区域内【指定矩形区域】的中心
+    /// </summary>
+    /// <param name="x"></param>
+    /// <param name="y"></param>
+    /// <param name="w"></param>
+    /// <param name="h"></param>
+    /// <exception cref="Exception"></exception>
+    public void BackgroundClickTo(int x, int y, int w, int h)
+    {
+        var res = ConvertRes<GameCaptureRegion>.ConvertPositionToTargetRegion(x, y, w, h, this);
+        var (cx, cy) = (res.X + res.Width / 2, res.Y + res.Height / 2);
+        TaskContext.Instance().PostMessageSimulator.LeftButtonClickBackground(cx, cy);
     }
 
     /// <summary>

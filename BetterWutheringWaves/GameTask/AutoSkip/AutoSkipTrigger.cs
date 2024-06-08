@@ -46,17 +46,17 @@ public class AutoSkipTrigger : ITaskTrigger
             var skipRa = content.CaptureRectArea.Find(AutoSkipAssets.Instance.SkipButtonRo);
             if (skipRa.IsExist())
             {
-                skipRa.Click();
-                TaskControl.Sleep(1000);
+                skipRa.BackgroundClick();
+                Thread.Sleep(1000);
                 using var captureRa = TaskControl.CaptureToRectArea();
                 captureRa.Find(AutoSkipAssets.Instance.NotPromptAgainButtonRo, region =>
                 {
-                    region.Click();
+                    region.BackgroundClick();
                 });
-                TaskControl.Sleep(300);
+                Thread.Sleep(300);
                 captureRa.Find(AutoSkipAssets.Instance.ConfirmButtonRo, region =>
                 {
-                    region.Click();
+                    region.BackgroundClick();
                 });
                 VisionContext.Instance().DrawContent.ClearAll();
                 return;
@@ -76,22 +76,9 @@ public class AutoSkipTrigger : ITaskTrigger
 
         if (inStory)
         {
-            // 随机上下键 保证剧情不死循环
-            int n = _random.Next(1, 4);
-            if (n == 2)
-            {
-                // Simulation.SendInput.Keyboard.KeyPress(User32.VK.VK_UP);
-                _simulator.KeyPressBackground(User32.VK.VK_W);
-                // _logger.LogInformation("上");
-                // Thread.Sleep(500);
-            }
-            else if (n == 3)
-            {
-                // Simulation.SendInput.Keyboard.KeyPress(User32.VK.VK_DOWN);
-                _simulator.KeyPressBackground(User32.VK.VK_S);
-                // _logger.LogInformation("下");
-                // Thread.Sleep(500);
-            }
+            // 点最下面的对话选项
+            _simulator.KeyPressBackground(User32.VK.VK_UP);
+            Thread.Sleep(50);
             _simulator.KeyPressBackground(User32.VK.VK_F);
         }
     }
